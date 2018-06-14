@@ -19,6 +19,32 @@ public class Car {
 
   // };
 
+  public Car() {
+
+  }
+
+  // Getters and Setters
+
+  public int getMaxSpeed() {
+    return this.maxSpeed;
+  }
+
+  public int getMinSpeed() {
+    return this.minSpeed;
+  }
+
+  public double getWeight() {
+    return this.weight;
+  }
+
+  public boolean getIsTheCarOn() {
+    return this.isTheCarOn;
+  }
+
+  public void setMaxSpeed(int newMaxSpeed) {
+    this.maxSpeed = newMaxSpeed;
+  }
+
   public Car(int customMaxSpeed, double customWeight, boolean customIsTheCarOn) {
     maxSpeed = customMaxSpeed;
     weight = customWeight;
@@ -33,6 +59,10 @@ public class Car {
     System.out.println(condition);
     System.out.println(nameOfCar);
     System.out.println(numberOfPeopleInCar);
+  }
+
+  public void upgradeMaxSpeed() {
+    setMaxSpeed(getMaxSpeed() + 10);
   }
 
   public void upgradeMinSpeed() {
@@ -75,17 +105,24 @@ public class Car {
   }
 
   public static void main(String[] args) {
-    Car tommyCar = new Car(550, 2000, false);
+    Car tommyCar = new Car();
     tommyCar.getOut();
-    tommyCar.getOut();
-    tommyCar.getIn();
-    tommyCar.getIn();
-    tommyCar.getIn();
-    tommyCar.getIn();
-    tommyCar.getIn();
-    tommyCar.getIn();
-    tommyCar.getIn();
-    tommyCar.turnTheCarOn();
-    tommyCar.turnTheCarOn();
+    // tommyCar.getOut();
+    // tommyCar.getIn();
+    // tommyCar.getIn();
+    // tommyCar.getIn();
+    // tommyCar.getIn();
+    // tommyCar.getIn();
+    // tommyCar.getIn();
+    // tommyCar.getIn();
+    // tommyCar.turnTheCarOn();
+    // tommyCar.turnTheCarOn();
+
+    Car illyaCar = new Car();
+    System.out.println(illyaCar.getMaxSpeed());
+    illyaCar.setMaxSpeed(200);
+    System.out.println(illyaCar.getMaxSpeed());
+    illyaCar.upgradeMaxSpeed();
+    System.out.println(illyaCar.getMaxSpeed());
   }
 }
