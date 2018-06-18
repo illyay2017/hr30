@@ -2,187 +2,70 @@ package illya.hr30.app;
 // to run: mvn package
 // followed up java -cp target/hr30-app-1.0-SNAPSHOT.jar illya.hr30.app.App
 
-import java.util.Random;
-import java.util.Scanner;
+import java.util.Arrays;
 
 public class App {
 
-  Scanner scanner = new Scanner(System.in);
-  String story;
-  String name;
-  String adj1;
-  String adj2;
-  String noun1;
-  String noun2;
-  String noun3;
-  String adverb;
-  String randNums;
-  Random rand = new Random();
-
-  // Getters:
-
-
-  public String getStory() {
-    return story;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public String getAdj1() {
-    return adj1;
-  }
-
-  public String getAdj2() {
-    return adj2;
-  }
-  public String getNoun1() {
-    return noun1;
-  }
-  public String getNoun2() {
-    return noun2;
-  }
-
-  public String getNoun3() {
-    return noun3;
-  }
-
-  public String getAdverb() {
-    return adverb;
-  }
-
-  public String getRandomNums() {
-    return randNums;
+  public static void printArray(int[] array, String[] array2) {
+    System.out.print("[");
+    int length;
+    if (array != null) {
+      length = array.length;
+    } else {
+      length = array2.length;
+    }
+    
+    for (int i = 0; i < length; i ++) {
+      System.out.print(array != null ? array[i] : array2[i]);
+      if (i < length - 1) {
+        System.out.print(", ");
+      }
+    }
+    System.out.print("]");
+    System.out.println();
   }
   
-  // Setters
-
-  public void setStory(String newStory) {
-    this.story = newStory;
-  }
-
-  public void setName(String newName) {
-    this.name = newName;
-  }
-
-  public void setAdj1(String newAdj1) {
-    this.adj1 = newAdj1;
-  }
-
-  public void setAdj2(String newAdj2) {
-    this.adj2 = newAdj2;
-  }
-
-  public void setNoun1(String newNoun1) {
-    this.noun1 = newNoun1;
-  }
-
-  public void setNoun2(String newNoun2) {
-    this.noun2 = newNoun2;
-  }
-
-  public void setNoun3(String newNoun3) {
-    this.noun3 = newNoun3;
-  }
-
-  public void setAdverb(String newAdverb) {
-    this.adverb = newAdverb;
-  }
-
-  public void setRandomNums() {
-    int num  = Math.abs(rand.nextInt()) % 100;
-    int index = 0;
-    int[] numberHolder = new int[3];
-
-    while (index < numberHolder.length) {
-      numberHolder[index] = num + index;
-      index++;
-    }
-
-    randNums = "not " + numberHolder[0] + ", not " + numberHolder[1]
-    + ", but " + numberHolder[2];
-  }
-
-  public void printInstructions() {
-    System.out.println("welcome to the MadLibs game. If you type in words, "
-    + "we'll give you a story. Start by typing in a name.");
-  }
-
-  // User Input
-
-  public void enterName() {
-    setName(scanner.nextLine());
-  }
-
-  public void enterNoun1() {
-    System.out.println("Give me a noun");
-    setNoun1(scanner.nextLine());
-  }
-
-  public void enterNoun2() {
-    System.out.println("Give me another noun");
-    setNoun2(scanner.nextLine());
-  }
-
-  public void enterNoun3() {
-    System.out.println("Give me the last noun");
-    setNoun3(scanner.nextLine());
-  }
-
-  public void enterAjd1() {
-    System.out.println("I need an adjective");
-    setAdj1(scanner.nextLine());
-  }
-
-  public void enterAdj2() {
-    System.out.println("Give me another adjective");
-    setAdj2(scanner.nextLine());
-  }
-
-  public void enterAdverb() {
-    System.out.println("Please give me an adverb");
-    setAdverb(scanner.nextLine());
-  }
-
-  public void putTogetherTheStory() {
-    String story;
-    int num = Math.abs(rand.nextInt()) % 2;
-    if (num == 0) {
-      story = "Jesse and her best friend " + getName() + " went to Disney World today! "
-      + "They saw a " + getNoun1() + " in a show at the Magic Kingdom "
-      + " and ate a " + getAdj1() + " feast for dinner. The next day I "
-      + " ran " + getAdverb() + " to meet Mickey Mouse in his "
-      + getNoun2() + " and then than night I gazed at at the " + getRandomNums()
-      + " " + getAdj2() + " fireworks shooting from the " + getNoun3() + ".";
-    } else {
-      story = "Amanda and her frienemy " + getName() + " went to the zoo last summer. "
-      + "They saw a " + getNoun1() + " and a tiny little " + getNoun2()
-      + ". That night they decided to climb " + getAdverb() + " into the " + getNoun3()
-      + " to get a closer look. The zoo was " + getAdj1() + " at night, but they "
-      + "didn't care... until " + getRandomNums() + " " + getAdj2() + " apes yelled in "
-      + "their faces, making Amanda and " + getName() + " sprint all the way back home";
-    }
-
-    setStory(story);
-  }
-
-  public void play() {
-    enterName();
-    enterNoun1();
-    enterAjd1();
-    enterAdj2();
-    enterNoun2();
-    enterAdverb();
-    enterNoun3();
-    setRandomNums();
-    putTogetherTheStory();
-    System.out.println(getStory());
-  }
-
   public static void main(String[] args) {
-    App game = new App();
-    game.printInstructions();
-    game.play();
-  } 
+    // 3 ways to initialize arrays in Java
+    // NOTE: all arrays elements must be of SAME data-type!
+    // NOTE2: cannot process (print, etc) arrays that have not been initialized!
+    // For example, int[] intArray1 is declared, but cannot be printed
+    // 1
+
+    // MODULO and the array index
+    // Array: [0, 1, 2, 3, 4]  ---> length == 5
+    // Math.abs(rand.nextInt()) % 5 ---> will always be either 0, 1, 2, 3, or 4
+    // Random objects from an array:
+    // Math.abs(rand.nextInt()) % array.length;
+
+    // DECLARING, ALLOCATING, and INITIALIZING
+    int[] intArray1;
+    // 2 (an array of integers with size 4)
+    int[] intArray2 = new int[4];
+    // 3
+    int[] intArray3 = {5, 2, 9, 1, 3};
+
+    //GIVEN FUNCTIONS:
+    Arrays.sort(intArray3);
+    // printArray(intArray3, null);
+
+    String[] shoppingList = {"bananas", "apples", "pears"};
+
+    intArray2[0] = 10;
+    intArray2[1] = 8;
+    intArray2[2] = 5;
+    intArray2[3] = 10;
+
+    // System.out.println("Hello");
+    // printArray(intArray2, null);
+    // printArray(null, shoppingList);
+
+    //SPECIAL FOR LOOP:
+    //"for each" loop which DOES NOT guarantee in-order traversal
+    System.out.println("Special for loop");
+    for (String s : shoppingList) {
+      System.out.println(s);
+    }
+
+  }
 }
