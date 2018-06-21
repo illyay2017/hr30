@@ -2,70 +2,80 @@ package illya.hr30.app;
 // to run: mvn package
 // followed up java -cp target/hr30-app-1.0-SNAPSHOT.jar illya.hr30.app.App
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class App {
-
-  public static void printArray(int[] array, String[] array2) {
-    System.out.print("[");
-    int length;
-    if (array != null) {
-      length = array.length;
-    } else {
-      length = array2.length;
-    }
-    
-    for (int i = 0; i < length; i ++) {
-      System.out.print(array != null ? array[i] : array2[i]);
-      if (i < length - 1) {
-        System.out.print(", ");
-      }
-    }
-    System.out.print("]");
-    System.out.println();
-  }
-  
   public static void main(String[] args) {
-    // 3 ways to initialize arrays in Java
-    // NOTE: all arrays elements must be of SAME data-type!
-    // NOTE2: cannot process (print, etc) arrays that have not been initialized!
-    // For example, int[] intArray1 is declared, but cannot be printed
-    // 1
+    // English to Spanish Dictionary
+    Map<String,String> englSpanDictionary = new HashMap<String, String>();
 
-    // MODULO and the array index
-    // Array: [0, 1, 2, 3, 4]  ---> length == 5
-    // Math.abs(rand.nextInt()) % 5 ---> will always be either 0, 1, 2, 3, or 4
-    // Random objects from an array:
-    // Math.abs(rand.nextInt()) % array.length;
+    // putting this inside our dictionary
+    englSpanDictionary.put("Monday", "Lunes");
+    englSpanDictionary.put("Tuesday", "Martes");
+    englSpanDictionary.put("Wednesday", "Miércoles");
+    englSpanDictionary.put("Thursday", "Jueves");
+    englSpanDictionary.put("Friday", "Viernes");
+    englSpanDictionary.put("Saturday", "Sábado");
+    englSpanDictionary.put("Sunday", "Domingo");
 
-    // DECLARING, ALLOCATING, and INITIALIZING
-    int[] intArray1;
-    // 2 (an array of integers with size 4)
-    int[] intArray2 = new int[4];
-    // 3
-    int[] intArray3 = {5, 2, 9, 1, 3};
+    // Retrieve things from our dictionary
+    System.out.println(englSpanDictionary.get("Monday"));
+    System.out.println(englSpanDictionary.get("Tuesday"));
+    System.out.println(englSpanDictionary.get("Wednesday"));
+    System.out.println(englSpanDictionary.get("Thursday"));
+    System.out.println(englSpanDictionary.get("Friday"));
 
-    //GIVEN FUNCTIONS:
-    Arrays.sort(intArray3);
-    // printArray(intArray3, null);
+    // print all the keys
+    System.out.println(englSpanDictionary.keySet());
+    // print all the values
+    System.out.println(englSpanDictionary.values());
+    // print out size
+    System.out.println("The size of our dictionary is " + englSpanDictionary.size());
+    System.out.println();
+    System.out.println();
 
-    String[] shoppingList = {"bananas", "apples", "pears"};
+    // Shopping list
+    Map<String,Boolean> shoppingList = new HashMap<String, Boolean>();
 
-    intArray2[0] = 10;
-    intArray2[1] = 8;
-    intArray2[2] = 5;
-    intArray2[3] = 10;
+    shoppingList.put("Ham", true);
+    shoppingList.put("Bread", Boolean.TRUE);
+    shoppingList.put("Oreos", Boolean.TRUE);
+    shoppingList.put("Eggs", Boolean.FALSE);
+    shoppingList.put("Butter", false);
 
-    // System.out.println("Hello");
-    // printArray(intArray2, null);
-    // printArray(null, shoppingList);
+    // Retrieve things from our dictionary
+    System.out.println(shoppingList.get("Ham"));
+    System.out.println(shoppingList.get("Bread"));
+    System.out.println(shoppingList.get("Oreos"));
+    System.out.println(shoppingList.get("Eggs"));
+    System.out.println(shoppingList.get("Butter"));
 
-    //SPECIAL FOR LOOP:
-    //"for each" loop which DOES NOT guarantee in-order traversal
-    System.out.println("Special for loop");
-    for (String s : shoppingList) {
-      System.out.println(s);
-    }
+    // print all the keys
+    System.out.println(shoppingList.keySet());
+    // print all the values
+    System.out.println(shoppingList.values());
+    // print out size
+    System.out.println("The size of our dictionary is " + shoppingList.size());
+    // check whether the dictionary is empty
+    System.out.println("Is empty? " + shoppingList.isEmpty());
+    // print out KV pairs
+    System.out.println(shoppingList.toString());
+    // remove k-v pair
+    shoppingList.remove("Eggs");
+    // replace values for existing keys
+    shoppingList.replace("Bread", Boolean.FALSE);
 
+    System.out.println(shoppingList.toString());
+
+    // clear the dectionary
+    // NOTE: this does not remove values in memory, but simply
+    // changes the pointers around
+    shoppingList.clear();
+
+    System.out.println("Is empty? " + shoppingList.isEmpty());
+
+    System.out.println();
+    System.out.println();
   }
 }
