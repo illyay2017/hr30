@@ -1,4 +1,4 @@
-package librarycatalogue;
+package book;
 
 public class Book {
 
@@ -41,10 +41,10 @@ public class Book {
   //Setters
   public void setIsCheckedOut(boolean newIsCheckedOut, int currentDayCheckedOut) {
     this.isCheckoutOut = newIsCheckedOut;
-    setDayCHeckedOut(currentDayCheckedOut);
+    setDayCheckedOut(currentDayCheckedOut);
   }
 
-  private void setDayCHeckedOut(int day) {
+  private void setDayCheckedOut(int day) {
     this.dayCheckedOut = day;
   }
 } 
